@@ -6,6 +6,7 @@ using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +43,6 @@ public class UsersController : BaseApiController
         Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
         return Ok(users);
     }
-
 
     [HttpGet("{username}")]
     public async Task<ActionResult<MemberDto>> GetUser(string username)
