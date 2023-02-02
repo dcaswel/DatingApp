@@ -70,6 +70,7 @@ public class UserRepository : IUserRepository
     {
         return await _context.Users
             .Where(x => x.UserName == username)
+            .IgnoreQueryFilters()
             .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
     }

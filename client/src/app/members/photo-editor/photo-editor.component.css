@@ -5,3 +5,13 @@
 input[type=file] {
   color: transparent;
 }
+
+img.unapproved {
+  opacity: 0.2;
+}
+
+p.waiting-approval {
+  position: absolute;
+  bottom: 0px;
+  color: red;
+}

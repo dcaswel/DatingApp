@@ -81,8 +81,6 @@ public class UsersController : BaseApiController
             PublicId = result.PublicId
         };
 
-        if (user.Photos.Count == 0) photo.IsMain = true;
-        
         user.Photos.Add(photo);
 
         if (await _uow.Complete())
@@ -122,7 +120,7 @@ public class UsersController : BaseApiController
     {
         var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
-        var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+        var photo = await _uow.PhotoRepository.GetPhotoByIdAsync(photoId);
         if (photo == null) return NotFound();
 
         if (photo.IsMain) return BadRequest("You can delete your main photo");

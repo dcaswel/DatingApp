@@ -1,1 +1,10 @@
-<p>photo-management works!</p>
+<div class="row mb-3">
+  <div class="col-2 mb-1" *ngFor="let photo of photos">
+    <p>{{photo.username | titlecase}}</p>
+    <img class="photo p-1 border border-1" src="{{photo.url}}" alt="Photo to moderate">
+    <div class="mt-1">
+      <button class="btn btn-primary me-1" (click)="approvePhoto(photo.id)">Approve</button>
+      <button class="btn btn-danger" (click)="rejectPhoto(photo.id)">Reject</button>
+    </div>
+  </div>
+</div>
